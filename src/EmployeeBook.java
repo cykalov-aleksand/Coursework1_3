@@ -200,7 +200,7 @@ public class EmployeeBook {
             outputString = "выше";
         }
         if (number == 0) {
-            System.out.println("Зарплат" + outputString + " указанного порога нет");
+            System.out.println("Зарплат " + outputString + " указанного порога нет");
         }
     }
 
@@ -227,7 +227,7 @@ public class EmployeeBook {
             outputString = "выше";
         }
         if (number == 0) {
-            System.out.println("Зарплат" + outputString + " указанного порога нет");
+            System.out.println("Зарплат " + outputString + " указанного порога нет");
         }
     }
 
