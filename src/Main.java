@@ -63,16 +63,16 @@ public class Main {
                 book.outputTheTable(numberDepartament);
                 printTitle("3. Получили в качестве параметра порог зарплаты в отделе " + doorstep);
                 printTitle("a.1. Вывели на консоль всех сотрудников отдела \"" + numberDepartament + "\" с зп меньше \" + doorstep");
-                book.displayTheSalaryBelow(doorstep, numberDepartament);
+                book.compareMoreAndLessThreshold(doorstep, numberDepartament,"<");
                 printTitle("b.1. Вывели на консоль всех сотрудников отдела " + numberDepartament + " с зп больше (или равно) " + doorstep);
-                book.displayTheSalaryAbove(doorstep, numberDepartament);
+                book.compareMoreAndLessThreshold(doorstep, numberDepartament,">");
             }
             printTitle("3. Получили в качестве параметра порог зарплаты на предприятии " + doorstep);
             printTitle("a.2. Вывели на консоль всех сотрудников предприятия с зп меньше " + doorstep);
-            book.displayTheSalaryBelow(doorstep);
+            book.compareMoreAndLessThreshold(doorstep,"<");
             printTitle("b.2. Вывели на консоль всех сотрудников предприятия с зп больше (или равно)  " + doorstep);
-            book.displayTheSalaryAbove(doorstep);
-        }
+            book.compareMoreAndLessThreshold(doorstep,">");
+            }
         printTitle("ДЕМОНСТРАЦИЯ РАБОТЫ МЕТОДОВ ПОД НАЗВАНИЕМ ОЧЕНЬ СЛОЖНО");
         String surnameNamePatrnimic1 = "Бганцов Сергей Александрович";
         String surnameNamePatrnimic2 = "Иванов Иван Иванович";
