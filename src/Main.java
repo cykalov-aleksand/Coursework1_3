@@ -29,7 +29,6 @@ public class Main {
                     book.calculateAmountExpenses() / book.countTheEmployees(), " руб.");
             printTitle("f) список ФИО всех сотрудников предприятия");
             book.displayListEmployees();
-
             printTitle("ПОВЫШЕННАЯ СЛОЖНОСТЬ");
             int procent = 10;
             int numberDepartament = 2;
@@ -82,9 +81,11 @@ public class Main {
         float salary2 = 88000f;
         int idEmployee1 = 4;
         int idEmployee2 = 7;
-        System.out.println("Ввели данные: \n1. surnameNamePatrnimic = " + surnameNamePatrnimic1 +
-                " - значения для пункта a.\n2. salary = " + salary1 +" - значения для пункта a.\n3. idEmployee1 = " +
-                idEmployee1 + " -значения для пункта b.\n4. idEmployee2 = " + idEmployee2 + " - значение для пункта 5.");
+        System.out.println("Ввели данные: \n1. surnameNamePatrnimic1 = " + surnameNamePatrnimic1 +
+                " - значения для пункта a.\n2. surnameNamePatrnimic1 = "+surnameNamePatrnimic2+
+                " - значение для пункта а.1\n3. salary1 = " + salary1 +" - значения для пункта a.\n4. salary2 = "+ salary2 +
+                " - значение для пункта а.1\n5. idEmployee1 = " +idEmployee1 + " - значения для пункта b.\n6. idEmployee2 = "
+                + idEmployee2 + " - значение для пункта 5.");
         printTitle("a. Добавить нового сотрудника в вакантную должность");
         System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic1, salary1));
         printTitle("a.1 Добавить нового сотрудника в вакантную должность (с изменением номера отдела)");
