@@ -1,5 +1,5 @@
 public class EmployeeBook {
-    final Employee[] employees = {
+    private final Employee[] employees = {
             new Employee("Рыжиков Сергей Викторович", 1, 74003f),
             new Employee("Кукушкина Надежда Михайловна", 2, 77777f),
             new Employee("Калмыков Вячеслав Васильевич", 3, 99343f),
