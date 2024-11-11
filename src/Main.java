@@ -12,21 +12,21 @@ public class Main {
         printTitle("КНИГА СОТРУДНИКОВ");
         printTitle("БАЗОВАЯ СЛОЖНОСТЬ");
         printTitle("a) список всех сотрудников");
-        book.outputTheTable();
+        book.outputTheTable(0);
         printTitle("b) сумму затрат на ЗП в месяц");
-        if (book.calculateAmountExpenses() == 0 && book.countTheEmployees() != 0) {
+        if (book.calculateAmountExpenses(0) == 0 && book.countTheEmployees(0) != 0) {
             System.out.println("Руководитель не платит работникам зарплату");
-        } else if (book.countTheEmployees() == 0) {
+        } else if (book.countTheEmployees(0) == 0) {
             System.out.println("Штат пуст, трудоустраиваите людей на вакантные должности");
         } else {
-            System.out.printf("%s%.2f%s\n", "Сумма затрат на зарплату сотрудникам составляет: ", book.calculateAmountExpenses(), " руб.");
+            System.out.printf("%s%.2f%s\n", "Сумма затрат на зарплату сотрудникам составляет: ", book.calculateAmountExpenses(0), " руб.");
             printTitle("c) сотрудники предприятия с минимальной ЗП");
-            book.compareMoreLess("<");
+            book.compareMoreLess(0,"<");
             printTitle("d) сотрудники предприятия с максимальной ЗП");
-            book.compareMoreLess(">");
+            book.compareMoreLess(0,">");
            printTitle("e) среднее значение зарплат на предприятии");
             System.out.printf("%s%.2f%s\n", "Среднее значение зарплат сотрудников предприятия составляет: ",
-                    book.calculateAmountExpenses() / book.countTheEmployees(), " руб.");
+                    book.calculateAmountExpenses(0) / book.countTheEmployees(0), " руб.");
             printTitle("f) список ФИО всех сотрудников предприятия");
             book.displayListEmployees();
             printTitle("ПОВЫШЕННАЯ СЛОЖНОСТЬ");
@@ -38,7 +38,7 @@ public class Main {
                     " - значения для пункта 2.\n3. procentDeportament = " + procentDeportament + " -значения для пункта 2.е\n4. doorstep = "
                     + doorstep + " - значение для пункта 3.");
             System.out.println("\n 1. Проиндексировать зарплату, (вызвать изменение зп у всех сотрудников на величину \"" + procent + " %\"):");
-            book.indexesWages(procent);
+            book.indexesWages(procent,0);
             printTitle("2. Получили в качестве параметра номер отдела " + numberDepartament);
             final int constantMinimumDepartment = 1;
             final int constantMaximumDepartament = 5;
@@ -69,9 +69,9 @@ public class Main {
             }
             printTitle("3. Получили в качестве параметра порог зарплаты на предприятии " + doorstep);
             printTitle("a.2. Вывели на консоль всех сотрудников предприятия с зп меньше " + doorstep);
-            book.compareMoreAndLessThreshold(doorstep,"<");
+            book.compareMoreAndLessThreshold(doorstep,0,"<");
             printTitle("b.2. Вывели на консоль всех сотрудников предприятия с зп больше (или равно)  " + doorstep);
-            book.compareMoreAndLessThreshold(doorstep,">");
+            book.compareMoreAndLessThreshold(doorstep,0,">");
             }
         printTitle("ДЕМОНСТРАЦИЯ РАБОТЫ МЕТОДОВ ПОД НАЗВАНИЕМ ОЧЕНЬ СЛОЖНО");
         String surnameNamePatrnimic1 = "Бганцов Сергей Александрович";
@@ -87,9 +87,9 @@ public class Main {
                 " - значение для пункта а.1\n5. idEmployee1 = " +idEmployee1 + " - значения для пункта b.\n6. idEmployee2 = "
                 + idEmployee2 + " - значение для пункта 5.");
         printTitle("a. Добавить нового сотрудника в вакантную должность");
-        System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic1, salary1));
+        System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic1,null, salary1));
         printTitle("a.1 Добавить нового сотрудника в вакантную должность (с изменением номера отдела)");
-        System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic2, deportament, salary2));
+                System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic2, String.valueOf(deportament), salary2));
         printTitle("b. Удалить сотрудника по указанному ID " + idEmployee1);
         if (book.deleteEmployye(idEmployee1)) {
             System.out.println("Сотрудник с ID= " + idEmployee1 + " Удален");

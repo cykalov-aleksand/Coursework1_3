@@ -12,53 +12,30 @@ public class EmployeeBook {
             new Employee("", 1, 0)
     };
 
-    void outputTheTable() {
-        System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                System.out.println(variable);
-            }
-        }
-    }
-
     void outputTheTable(int numberDepartament) {
-        System.out.printf("%5s%35s%20s\n", "id", "Фамилия имя отчество", "Зарплата");
+        if (numberDepartament == 0) {
+            System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
+        } else {
+            System.out.printf("%5s%35s%20s\n", "id", "Фамилия имя отчество", "Зарплата");
+        }
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0) {
+                    System.out.println(variable);
+                } else if (variable.getDepartament() == numberDepartament) {
                     System.out.printf("%5d%35s%20.2f%s\n", variable.getId(), variable.getFulname(), variable.getSalary(), " руб.");
                 }
             }
         }
     }
 
-    float calculateAmountExpenses() {
-        float amount = 0;
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                amount = amount + variable.getSalary();
-            }
-        }
-        return amount;
-    }
-
     float calculateAmountExpenses(int numberDepartament) {
         float amount = 0;
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0 || variable.getDepartament() == numberDepartament) {
                     amount = amount + variable.getSalary();
                 }
-            }
-        }
-        return amount;
-    }
-
-    int countTheEmployees() {
-        byte amount = 0;
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                amount++;
             }
         }
         return amount;
@@ -68,45 +45,12 @@ public class EmployeeBook {
         int amount = 0;
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0 || variable.getDepartament() == numberDepartament) {
                     amount++;
                 }
             }
         }
         return amount;
-    }
-
-    void compareMoreLess(String moreLess) {
-        float minimum = employees[0].getSalary();
-        float maximum = employees[0].getSalary();
-        System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (minimum > variable.getSalary()) {
-                    minimum = variable.getSalary();
-                }
-                if (maximum <= variable.getSalary()) {
-                    maximum = variable.getSalary();
-                }
-            }
-        }
-        int counter = 0;
-        float minimumOrMaximum = minimum;
-        String outputString = "Минимальная";
-        if (moreLess.contains(">")) {
-            minimumOrMaximum = maximum;
-            outputString = "Максимальная";
-        }
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (minimumOrMaximum == variable.getSalary()) {
-                    counter++;
-                    System.out.println(variable);
-                }
-            }
-        }
-        System.out.printf("\n%s%s", outputString, " зарплата сотрудника предприятия составляет: ");
-        System.out.printf("%.2f%s%d%s\n", minimumOrMaximum, " руб. и её получает ", counter, " человек(а)");
     }
 
     void compareMoreLess(int numberDepartament, String moreLess) {
@@ -115,7 +59,7 @@ public class EmployeeBook {
         System.out.printf("%5s%35s%20s\n", "id", "Фамилия имя отчество", "Зарплата");
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0 || variable.getDepartament() == numberDepartament) {
                     if (minimum > variable.getSalary()) {
                         minimum = variable.getSalary();
                     }
@@ -134,7 +78,7 @@ public class EmployeeBook {
         }
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0 || variable.getDepartament() == numberDepartament) {
                     if (minimumOrMaximum == variable.getSalary()) {
                         counter++;
                         System.out.printf("%5s%35s%20s\n", variable.getId(), variable.getFulname(), variable.getSalary());
@@ -155,22 +99,11 @@ public class EmployeeBook {
         }
     }
 
-    void indexesWages(int procent) {
-        System.out.printf("%5s%35s%10s%20s%35s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата", "Зарплата после индексации");
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                System.out.print(variable);
-                variable.setSalary((variable.getSalary() + (variable.getSalary() * procent / 100)));
-                System.out.printf("%20.2f%5s\n", variable.getSalary(), "руб");
-            }
-        }
-    }
-
     void indexesWages(int procent, int numberDepartament) {
         System.out.printf("%5s%35s%10s%20s%35s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата", "Зарплата после индексации");
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0 || variable.getDepartament() == numberDepartament) {
                     System.out.print(variable);
                     variable.setSalary((variable.getSalary() + (variable.getSalary() * procent / 100)));
                     System.out.printf("%20.2f%5s\n", variable.getSalary(), "руб");
@@ -179,37 +112,12 @@ public class EmployeeBook {
         }
     }
 
-    void compareMoreAndLessThreshold(float doorstep, String moreLess) {
-        System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
-        byte number = 0;
-        for (Employee variable : employees) {
-            if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (moreLess.contains(">")) {
-                    if (doorstep <= variable.getSalary()) {
-                        System.out.println(variable);
-                        number++;
-                    }
-                } else if (doorstep > variable.getSalary()) {
-                    System.out.println(variable);
-                    number++;
-                }
-            }
-        }
-        String outputString = "ниже";
-        if (moreLess.contains(">")) {
-            outputString = "выше";
-        }
-        if (number == 0) {
-            System.out.println("Зарплат " + outputString + " указанного порога нет");
-        }
-    }
-
     void compareMoreAndLessThreshold(float doorstep, int numberDepartament, String moreLess) {
         System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
         byte number = 0;
         for (Employee variable : employees) {
             if (variable.getFulname() != null && !variable.getFulname().isBlank()) {
-                if (variable.getDepartament() == numberDepartament) {
+                if (numberDepartament == 0 || variable.getDepartament() == numberDepartament) {
                     if (moreLess.contains(">")) {
                         if (doorstep <= variable.getSalary()) {
                             System.out.println(variable);
@@ -231,7 +139,7 @@ public class EmployeeBook {
         }
     }
 
-    boolean addNewEmployye(String surnameNamePatrnimic, float salary) {
+    boolean addNewEmployye(String surnameNamePatrnimic, String departament, float salary) {
         int emptyCell = 0;
         int numberOfEmptyCells = 0;
         for (Employee variable : employees) {
@@ -246,51 +154,19 @@ public class EmployeeBook {
         for (int cell = 0; cell < employees.length; cell++) {
             if (employees[cell].getFulname() == null || employees[cell].getFulname().isBlank()) {
                 employees[cell].setFullName(surnameNamePatrnimic);
-                employees[cell].setSalary(salary);
-                emptyCell = cell;
-                break;
-            }
-        }
-        System.out.println("Данные занесены");
-        System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
-        System.out.println(employees[emptyCell]);
-        if (numberOfEmptyCells == 1) {
-            System.out.println("На предприятии, больше вакантных должностей нет");
-            return true;
-        } else {
-            System.out.printf("\n%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
-            for (Employee variable : employees) {
-                if (variable.getFulname() == null || variable.getFulname().isBlank()) {
-                    System.out.println(variable);
+               if(departament != null){
+                    employees[cell].setDepartament(Integer.parseInt(departament.trim()));
                 }
-            }
-            System.out.println("На предприятии остались вакантные должности");
-            return true;
-        }
-    }
-
-    boolean addNewEmployye(String surnameNamePatrnimic, int departament, float salary) {
-        int emptyCell = 0;
-        int numberOfEmptyCells = 0;
-        for (Employee variable : employees) {
-            if (variable.getFulname() == null || variable.getFulname().isBlank()) {
-                numberOfEmptyCells++;
-            }
-        }
-        if (numberOfEmptyCells == 0) {
-            System.out.println("Вакантных должностей нет, сотрудник не трудоустроен");
-            return false;
-        }
-        for (int cell = 0; cell < employees.length; cell++) {
-            if (employees[cell].getFulname() == null || employees[cell].getFulname().isBlank()) {
-                employees[cell].setFullName(surnameNamePatrnimic);
-                employees[cell].setDepartament(departament);
                 employees[cell].setSalary(salary);
                 emptyCell = cell;
                 break;
             }
         }
-        System.out.println("Данные занесены, изменена штатная структура предприятия (заменен № отдела)");
+        if(departament != null) {
+            System.out.println("Данные занесены, изменена штатная структура предприятия (заменен № отдела)");
+        }else {
+            System.out.println("Данные занесены");
+        }
         System.out.printf("%5s%35s%10s%20s\n", "id", "Фамилия имя отчество", "Отдел", "Зарплата");
         System.out.println(employees[emptyCell]);
         if (numberOfEmptyCells == 1) {
