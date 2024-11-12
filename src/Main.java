@@ -31,7 +31,7 @@ public class Main {
             book.displayListEmployees();
             printTitle("ПОВЫШЕННАЯ СЛОЖНОСТЬ");
             int procent = 10;
-            int numberDepartament = 2;
+            int numberDepartament = 1;
             int procentDeportament = -10;
             float doorstep = 80000.23f;
             System.out.println("Ввели данные: \n1. procent = " + procent + " - значения для пункта 1.\n2. numberdepartament = " + numberDepartament +
@@ -79,7 +79,7 @@ public class Main {
         int deportament = 4;
         float salary1 = 70000f;
         float salary2 = 88000f;
-        int idEmployee1 = 4;
+        int idEmployee1 = 3;
         int idEmployee2 = 7;
         System.out.println("Ввели данные: \n1. surnameNamePatrnimic1 = " + surnameNamePatrnimic1 +
                 " - значения для пункта a.\n2. surnameNamePatrnimic1 = "+surnameNamePatrnimic2+
@@ -87,11 +87,11 @@ public class Main {
                 " - значение для пункта а.1\n5. idEmployee1 = " +idEmployee1 + " - значения для пункта b.\n6. idEmployee2 = "
                 + idEmployee2 + " - значение для пункта 5.");
         printTitle("a. Добавить нового сотрудника в вакантную должность");
-        System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic1,null, salary1));
+        System.out.println("Метод вернул - " + book.addNewEmployee(surnameNamePatrnimic1,null, salary1));
         printTitle("a.1 Добавить нового сотрудника в вакантную должность (с изменением номера отдела)");
-                System.out.println("Метод вернул - " + book.addNewEmployye(surnameNamePatrnimic2, String.valueOf(deportament), salary2));
+                System.out.println("Метод вернул - " + book.addNewEmployee(surnameNamePatrnimic2, String.valueOf(deportament), salary2));
         printTitle("b. Удалить сотрудника по указанному ID " + idEmployee1);
-        if (book.deleteEmployye(idEmployee1)) {
+        if (book.deleteEmployee(idEmployee1)) {
             System.out.println("Сотрудник с ID= " + idEmployee1 + " Удален");
         } else {
             System.out.println("Должность с указанным ID вакантна ");
